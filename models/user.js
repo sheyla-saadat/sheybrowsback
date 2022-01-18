@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      user.hasMany(models.reservation);
     }
   }
   user.init(
@@ -26,6 +26,15 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {
