@@ -5,6 +5,8 @@ const authMiddleWare = require("./auth/middleware");
 const authRouter = require("./routers/auth");
 const { PORT } = require("./config/constants");
 
+const serviceRouter = require("./routers/service");
+
 // Create an express app
 const app = express();
 
@@ -49,6 +51,8 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
     },
   });
 });
+
+app.use("/service", serviceRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
