@@ -21,10 +21,21 @@ module.exports = {
       onUpdate: "CASCADE",
       onDelete: "CASCADE",
     });
+
+    await queryInterface.addColumn("gallaries", "serviceId", {
+      type: Sequelize.INTEGER,
+      reference: {
+        model: "services",
+        key: "id",
+      },
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE",
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.removeColumn("reservations", "userId");
     await queryInterface.removeColumn("reservations", "serviceId");
+    await queryInterface.removeColumn("gallaries", "serviceId");
   },
 };
