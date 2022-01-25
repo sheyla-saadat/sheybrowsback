@@ -1,28 +1,25 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class reservation extends Model {
+  class calendar extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      reservation.belongsTo(models.user);
-      reservation.belongsTo(models.service);
+      // define association here
     }
   }
-  reservation.init(
+  calendar.init(
     {
       time: DataTypes.DATE,
-      // date: DataTypes.DATEONLY,
-      description: DataTypes.STRING,
-      isConfirmed: DataTypes.BOOLEAN,
+      isBooked: DataTypes.BOOLEAN,
     },
     {
       sequelize,
-      modelName: "reservation",
+      modelName: "calendar",
     }
   );
-  return reservation;
+  return calendar;
 };
