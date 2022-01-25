@@ -1,6 +1,7 @@
 const express = require("express");
 
 const { Router } = express;
+const auth = require("../auth/middleware");
 
 const { service, reservation, user, gallary } = require("../models");
 ///incase not needed will be deleted after im done with the routs
@@ -35,6 +36,39 @@ router.get("/gallary", async (req, res, next) => {
     res.status(200).send({
       message: "Your gallary from backend is:",
       gallaryData,
+    });
+  } catch (e) {
+    next(e);
+  }
+});
+router.post("/reservation", auth, async (req, res, next) => {
+  const { serviceId, dateTime } = req.body;
+  const userId = req.user.id;
+
+  if (!serviceId || !dateTime) {
+    return res
+      .status(400)
+      .send({ message: "Please choose your specific service, date and time" });
+  }
+
+  const reservationCreated = await reservation.create({
+    serviceId,
+    dateTime,
+    userId,
+  });
+
+  return res
+    .status(200)
+    .send({ message: "New reservation created", reservationCreated });
+});
+
+router.get("/reservation", async (req, res, next) => {
+  try {
+    const allReservation = await reservation.findAll();
+
+    res.status(200).send({
+      message: "Your requested reservation for admin from the bakc is:",
+      allReservation,
     });
   } catch (e) {
     next(e);
