@@ -125,6 +125,19 @@ router.post("/calendar", auth, async (req, res, next) => {
 
   return res.status(200).send({ message: "Calendar in DB is:", allCalendar });
 });
+router.patch("/calendar", async (req, res, next) => {
+  const { isBooked, id } = req.body;
+
+  try {
+    const newBook = await calendar.findByPk(id);
+
+    await newBook.update({ isBooked });
+
+    return res.status(200).send({ newBook });
+  } catch (e) {
+    next(e);
+  }
+});
 
 router.get("/:name", async (req, res, next) => {
   try {
