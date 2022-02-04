@@ -125,6 +125,7 @@ router.post("/calendar", auth, async (req, res, next) => {
 
   return res.status(200).send({ message: "Calendar in DB is:", allCalendar });
 });
+
 router.patch("/calendar", async (req, res, next) => {
   const { isBooked, id } = req.body;
 

@@ -7,6 +7,21 @@ module.exports = {
       [
         {
           imageUrl:
+            "https://res.cloudinary.com/dkdzt4lca/image/upload/v1642848739/Sheyla/WhatsApp_Image_2022-01-22_at_11.51.28_1_au3gxd.jpg",
+          serviceId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dkdzt4lca/image/upload/v1642848739/Sheyla/WhatsApp_Image_2022-01-22_at_11.51.28_hgucpf.jpg",
+          serviceId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
+        {
+          imageUrl:
             "https://res.cloudinary.com/dkdzt4lca/image/upload/v1642685860/Sheyla/WhatsApp_Image_2022-01-20_at_14.32.06_1_mitqb0.jpg",
           serviceId: 3,
           createdAt: new Date(),
